@@ -1,0 +1,7 @@
+{
+  "name": "pelicantours",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
