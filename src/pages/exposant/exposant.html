@@ -1,0 +1,32 @@
+<!--
+  Generated template for the ExposantPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <img src="{{BANNIERE}}">
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-card *ngFor="let exposant of expos?.exposants">
+      <ion-item>
+        <ion-avatar item-start>
+          <img src="{{exposant.photo}}" (click)="onDetail(exposant)">
+        </ion-avatar>
+        <h2>{{exposant.nom|uppercase}}</h2>
+      </ion-item>
+      <ion-card-content>
+        <div [innerHTML]="exposant.description|slice:0:120"></div>
+        <button ion-button="" end="" (click)="onDetail(exposant)">Voir plus</button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-list>
+</ion-content>

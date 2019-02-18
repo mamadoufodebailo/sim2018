@@ -1,17 +1,37 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-navbar>
+  <ion-toolbar>
+    <img src="{{BANNIERE}}">
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
+  <form #f="ngForm" (ngSubmit)="addContact(f.value)">
     <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
+      <ion-label>Prénom</ion-label>
+      <ion-input required type="text" name="prenom" [(ngModel)]="contact.prenom"></ion-input>
     </ion-item>
-  </ion-list>
+    <ion-item>
+      <ion-label>Nom</ion-label>
+      <ion-input required type="text" name="nom" [(ngModel)]="contact.nom"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Objet</ion-label>
+      <ion-input required type="text" name="objet" [(ngModel)]="contact.objet"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input name="email" pattern="^[a-zA-Z0-9_.-]+@[a-zA-Z0-9_.-]+\.[a-z]{2,4}$" required
+                 type="text" [(ngModel)]="contact.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Message</ion-label>
+      <ion-textarea name="message" required [(ngModel)]="contact.message"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <p style="color:red"> {{message}} </p>
+    </ion-item>
+    <ion-item>
+      <button block="" ion-button="" [disabled]="!f.valid" type="submit">Envoyer</button>
+    </ion-item>
+  </form>
 </ion-content>
